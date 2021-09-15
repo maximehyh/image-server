@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  python:
+    environment:
+      - DEBUG=true
+      - SERVER_PORT=8000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:  
+      # Comment/uncomment if you want to allow live debugging
+      - ./src:/app/src
+      - ./assets:/app/assets
+    command: ["python", "app.py"]
+    ports: 
+      # Needs to match with SERVER_PORT env variable
+      - 8000:8000
