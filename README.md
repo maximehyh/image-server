@@ -1,9 +1,14 @@
 # image-server
 
+Web server providing a simple U.I to allow image processing and display of the results. 
+Image operations are using Numpy as much as possible. 
+OpenCV can easily be added if you want to have access to some additional image processing capabilities. 
+
+
 ## Depedencies
 - Numpy
-- OpenCV
-- Tested with Python >= 3.9
+- Tested with Python 3.9
+- (OpenCV)
 
 ## Setup
 
@@ -27,7 +32,7 @@ You can also add a .env file at the root of the project in order to set the foll
 A main file is provided if you want to directly test the image processing functions:
 
 ```python
-python src/main.py -i assets/image_1.jpeg -o output_folder -f RGB_SPLIT
+python src/main.py -i assets/image_1.jpeg -o output_folder -f RGB_SPLIT|SPACE_SPLIT|SPLIT_PIX|ROTATE|SAVE_PICS|CALCULATE
 ```
 
 ## Server
@@ -46,7 +51,7 @@ In the `docker-compose.yaml` file, uncomment the volume mount `./src:/app/src` (
 
 ## Known issues
 
-- If you get the following error on MACOS while trying to run main.py: 
+- If you are using OpenCV and get the following error on MACOS while trying to run main.py: 
 ```
 Traceback (most recent call last):
   File "src/main.py", line 2, in <module>

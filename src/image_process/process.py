@@ -42,8 +42,31 @@ def split_rgb(image_path: str, output_folder: str) -> None:
         save_image(axis, output_folder, named_axis[axis], "jpeg")
 
 
-def convert_hsl(image_path: str, output_folder: str) -> None:
-    return
+def rotate(image_path: str, output_folder: str):
+    im = np.array(Image.open(image_path))
+
+    rotated = np.rot90(im)
+    save_image("rotated", output_folder, rotated, "png")
+
+
+def save_pics(image_path: str, output_folder: str):
+    im = np.array(Image.open(image_path))
+    for i in range(0, 10):
+        name = "frame_0%s" % i
+        save_image(name, output_folder, im, "png")
+
+
+def calculate(image_path: str, output_folder: str):
+    A = np.matrix([[10, -9, -12], [7, -12, 11]])
+    B = np.matrix([[7, 3], [12, 25], [0, 36]])
+    C = np.matrix([[2, 2], [-6, -7]])
+
+    D = np.dot(A, B)
+    E = np.dot(A, B, C)
+    F = np.dot(np.transpose(A), C)
+    print("D =", D)
+    print("E =", E)
+    print("F =", F)
 
 
 def save_image(name: str,
@@ -72,6 +95,9 @@ def split_image(image: np.ndarray) -> dict:
 function_dict = {
     "RGB_SPLIT": split_rgb,
     "SPACE_SPLIT": split_image_half,
-    "RGB_TO_HSL": convert_hsl,
     "SPLIT_PIX": split_pix,
+    "ROTATE": rotate,
+    # main.py only
+    "SAVE_PICS": save_pics,
+    "CALCULATE": calculate
 }

@@ -1,4 +1,4 @@
-FROM python:3.9.7-bullseye
+FROM python:3.8-slim-buster
 
 # Required to use OpenCV in case you eventually need to add it
 # RUN apt-get update

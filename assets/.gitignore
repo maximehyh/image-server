@@ -2,3 +2,5 @@
 *
 # Except this file
 !.gitignore
+!image_*.jpeg
+!image.png
